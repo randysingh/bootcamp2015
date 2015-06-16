@@ -6,6 +6,11 @@ namespace DemoApp.Common.ViewModels
     {
         private readonly INavigationService _navigationService;
         public string Name { get; set; }
+
+        public MainViewModel()
+        {
+            Name = "Hello from portable";
+        }
         public MainViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
