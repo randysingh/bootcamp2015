@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="2a2d8765-ccf1-43d1-8a84-2a7ad49274ca" Publisher="CN=Teemu" Version="1.0.0.0" />
+  <Identity Name="BCLLab2Win8" Publisher="CN=Teemu" Version="1.0.0.0" />
   <Properties>
     <DisplayName>Caliburn.Micro.HelloPortable.Windows</DisplayName>
     <PublisherDisplayName>Teemu</PublisherDisplayName>

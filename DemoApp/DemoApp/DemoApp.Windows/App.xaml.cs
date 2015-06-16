@@ -8,6 +8,9 @@ using DemoApp.Common.ViewModels;
 using DemoApp.Windows.Services;
 using DemoApp.Windows.Views;
 using INavigationService = DemoApp.Common.INavigationService;
+using DemoApp.Common.Interfaces;
+using DemoApp.Common.Services;
+using System.Diagnostics;
 
 namespace DemoApp.Windows
 {
@@ -35,13 +38,16 @@ namespace DemoApp.Windows
             MessageBinder.SpecialValues.Add("$clickeditem", c => ((ItemClickEventArgs)c.EventArgs).ClickedItem);
 
             ViewModelLocator.AddNamespaceMapping("DemoApp.Windows.Views", "DemoApp.Common.ViewModels");
-           
+            ViewLocator.AddNamespaceMapping("DemoApp.Common.ViewModels", "DemoApp.Windows.Views");
+
+            LogManager.GetLog = type => new DebugLogger(type);
             
             _container = new WinRTContainer();
 
             _container.RegisterWinRTServices();
 
             _container.PerRequest<MainViewModel>();
+            _container.PerRequest<JobDetailViewModel>();
 
             PrepareViewFirst();
         }
@@ -50,6 +56,8 @@ namespace DemoApp.Windows
         {
             _container.RegisterNavigationService(rootFrame);
             _container.RegisterSingleton(typeof(INavigationService), null, typeof(WindowsNavigationService));
+            _container.RegisterSingleton(typeof(IMyJobsService), null, typeof(MyJobsService));
+            _container.RegisterSingleton(typeof(ILocalDataService), null, typeof(WindowsLocalDataService));
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -77,5 +85,45 @@ namespace DemoApp.Windows
         {
             _container.BuildUp(instance);
         }
+    }
+
+    class DebugLogger : ILog
+    {
+        #region Fields
+        private readonly Type _type;
+        #endregion
+
+        #region Constructors
+        public DebugLogger(Type type)
+        {
+            _type = type;
+        }
+        #endregion
+
+        #region Helper Methods
+        private string CreateLogMessage(string format, params object[] args)
+        {
+            return string.Format("[{0}] {1}",
+            DateTime.Now.ToString("o"),
+            string.Format(format, args));
+        }
+        #endregion
+
+        #region ILog Members
+        public void Error(Exception exception)
+        {
+            Debug.WriteLine(CreateLogMessage(exception.ToString()), "ERROR");
+        }
+
+        public void Info(string format, params object[] args)
+        {
+            Debug.WriteLine(CreateLogMessage(format, args), "INFO");
+        }
+
+        public void Warn(string format, params object[] args)
+        {
+            Debug.WriteLine(CreateLogMessage(format, args), "WARN");
+        }
+        #endregion
     }
 }
