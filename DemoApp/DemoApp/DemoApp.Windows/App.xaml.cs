@@ -5,7 +5,9 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Controls;
 using Caliburn.Micro;
 using DemoApp.Common.ViewModels;
+using DemoApp.Windows.Services;
 using DemoApp.Windows.Views;
+using INavigationService = DemoApp.Common.INavigationService;
 
 namespace DemoApp.Windows
 {
@@ -47,6 +49,7 @@ namespace DemoApp.Windows
         protected override void PrepareViewFirst(Frame rootFrame)
         {
             _container.RegisterNavigationService(rootFrame);
+            _container.RegisterSingleton(typeof(INavigationService), null, typeof(WindowsNavigationService));
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
