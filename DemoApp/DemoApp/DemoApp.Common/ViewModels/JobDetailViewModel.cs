@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DemoApp.Common.Interfaces;
 using DemoApp.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace DemoApp.Common.ViewModels
     public class JobDetailViewModel : Screen
     {
         INavigationService _navigationService;
+        IMyJobsService _myJobsService;
 
         public ICommand SaveJob { get; set; }
 
@@ -19,6 +21,9 @@ namespace DemoApp.Common.ViewModels
 
         public Job Job { get; set; }
 
+        /// <summary>
+        /// This is only here so that caliburn micro will set it.
+        /// </summary>
         public Job Parameter 
         { 
             set
@@ -27,11 +32,29 @@ namespace DemoApp.Common.ViewModels
             }
         }
 
-        public JobDetailViewModel(INavigationService navigationService)
+        public JobDetailViewModel(INavigationService navigationService,
+            IMyJobsService myJobsService
+            )
         {
             _navigationService = navigationService;
+            _myJobsService = myJobsService;
 
             GoBack = new DelegateCommand(a => _navigationService.GoBack());
+            SaveJob = new DelegateCommand(a => OnSaveJob());
+        }
+
+        private void OnSaveJob()
+        {
+            _myJobsService.AddToMyJobs(Job);
+            //TODO Disable the save job button
+        }
+
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+
+            //TODO detect if this job is part of my jobs, enable / disable button
+
         }
     }
 }
