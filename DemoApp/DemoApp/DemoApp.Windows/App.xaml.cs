@@ -35,7 +35,7 @@ namespace DemoApp.Windows
             MessageBinder.SpecialValues.Add("$clickeditem", c => ((ItemClickEventArgs)c.EventArgs).ClickedItem);
 
             ViewModelLocator.AddNamespaceMapping("DemoApp.Windows.Views", "DemoApp.Common.ViewModels");
-           
+            ViewLocator.AddNamespaceMapping("DemoApp.Common.ViewModels", "DemoApp.Windows.Views");
             
             _container = new WinRTContainer();
 
