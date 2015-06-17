@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\WindowsNavigationService.cs" />
+    <Compile Include="Services\WindowsStorageProvider.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
