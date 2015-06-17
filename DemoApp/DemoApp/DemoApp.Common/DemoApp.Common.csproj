@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\IStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PictureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro">

@@ -45,6 +45,7 @@ namespace DemoApp.Windows
             _container.RegisterWinRTServices();
 
             _container.PerRequest<MainViewModel>();
+            _container.PerRequest<PictureViewModel>();
             _container.RegisterSingleton(typeof(IStorageProvider), null, typeof(WindowsStorageProvider));
 
             PrepareViewFirst();

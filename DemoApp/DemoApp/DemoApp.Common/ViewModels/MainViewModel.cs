@@ -1,4 +1,7 @@
-﻿using Caliburn.Micro;
+﻿using System.Windows.Input;
+using Caliburn.Micro;
+using DemoApp.Common.Common;
+using DemoApp.Common.Interfaces;
 
 namespace DemoApp.Common.ViewModels
 {
@@ -6,6 +9,11 @@ namespace DemoApp.Common.ViewModels
     {
         private readonly INavigationService _navigationService;
         public string Name { get; set; }
+
+        public ICommand GoToPictureViewCommand
+        {
+            get { return new DelegateCommand(() => _navigationService.NavigateToViewModel<PictureViewModel>()) ; }
+        }
 
         public MainViewModel()
         {
