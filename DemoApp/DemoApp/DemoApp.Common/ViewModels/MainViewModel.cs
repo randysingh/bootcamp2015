@@ -13,7 +13,10 @@ namespace DemoApp.Common.ViewModels
         private readonly IMyJobsService _myJobs;
 
         private ObservableCollection<JobViewModel> _myJobsList = new ObservableCollection<JobViewModel>();
+        private ObservableCollection<JobViewModel> _searchResults = new ObservableCollection<JobViewModel>();
         private bool _isLoading;
+        private string _queryString;
+        private int _minSalary, _maxSalary;
 
         #region Bindable Properties
 
@@ -24,6 +27,16 @@ namespace DemoApp.Common.ViewModels
 
         public ICommand StartJobsQuery { get; set; }
 
+        public ObservableCollection<JobViewModel> SearchResults
+        {
+            get { return _searchResults; }
+        }
+
+        public ObservableCollection<JobViewModel> MyJobs
+        {
+            get { return _myJobsList; }
+        }
+
         /// <summary>
         /// Set me to true while fetching results. set me to false when fetching done.
         /// </summary>
@@ -31,6 +44,24 @@ namespace DemoApp.Common.ViewModels
         {
             get { return _isLoading; }
             set { _isLoading = value; NotifyOfPropertyChange(() => IsLoading); }
+        }
+
+        public int MinSalary
+        {
+            get { return _minSalary; }
+            set { _minSalary = value; NotifyOfPropertyChange(() => MinSalary); }
+        }
+
+        public int MaxSalary
+        {
+            get { return _minSalary; }
+            set { _minSalary = value; NotifyOfPropertyChange(() => MinSalary); }
+        }
+
+        public string QueryString
+        {
+            get { return _queryString; }
+            set { _queryString = value; NotifyOfPropertyChange(() => QueryString); }
         }
 
         #endregion
