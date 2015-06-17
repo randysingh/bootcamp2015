@@ -4,3 +4,4 @@ DemoApp/DemoApp/DemoApp.Windows/bin/*
 DemoApp/DemoApp/DemoApp.Windows/obj/*
 packages/*
 DemoApp/DemoApp/DemoApp.Tests/obj/
+DemoApp/DemoApp/DemoApp.Tests/bin/
