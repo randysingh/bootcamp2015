@@ -30,6 +30,7 @@
         
         <ListView Height="500" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center"
                   ItemsSource="{Binding SearchResults}" IsItemClickEnabled="False"
+                  SelectionMode="None"
                   ItemTemplate="{StaticResource JobTemplate}"
                   >
             

@@ -14,9 +14,9 @@ namespace DemoApp.Common.Models
         [JsonProperty("position_title")]
         public string Title { get; set; }
         [JsonProperty("minimum")]
-        public int MinSalary { get; set; }
+        public double MinSalary { get; set; }
         [JsonProperty("maximum")]
-        public int MaxSalary { get; set; }
+        public double MaxSalary { get; set; }
 
         [JsonProperty("id")]
         public string JobId { get; set; }

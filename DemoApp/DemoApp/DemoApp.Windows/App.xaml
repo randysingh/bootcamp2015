@@ -7,7 +7,7 @@
     <cm:CaliburnApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources\DataTemplates.xaml" />
+                <ResourceDictionary Source="Resources/DataTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </cm:CaliburnApplication.Resources>
