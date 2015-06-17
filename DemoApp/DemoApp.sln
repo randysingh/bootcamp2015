@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp.Windows", "DemoApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp.Common", "DemoApp\DemoApp.Common\DemoApp.Common.csproj", "{7D817598-0EA6-4D00-8B11-42B4769E27BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp.Tests", "DemoApp\DemoApp.Tests\DemoApp.Tests.csproj", "{32269078-DB32-42C3-A7AE-EE7E898E1ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,16 @@ Global
 		{7D817598-0EA6-4D00-8B11-42B4769E27BF}.Release|ARM.ActiveCfg = Release|Any CPU
 		{7D817598-0EA6-4D00-8B11-42B4769E27BF}.Release|x64.ActiveCfg = Release|Any CPU
 		{7D817598-0EA6-4D00-8B11-42B4769E27BF}.Release|x86.ActiveCfg = Release|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Release|x64.ActiveCfg = Release|Any CPU
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +74,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{50B02AD4-6699-409E-AADB-EBCE459B36FE} = {1366564E-326E-4D0F-AC1A-37D234E5AAFE}
 		{7D817598-0EA6-4D00-8B11-42B4769E27BF} = {1366564E-326E-4D0F-AC1A-37D234E5AAFE}
+		{32269078-DB32-42C3-A7AE-EE7E898E1ED6} = {1366564E-326E-4D0F-AC1A-37D234E5AAFE}
 	EndGlobalSection
 EndGlobal

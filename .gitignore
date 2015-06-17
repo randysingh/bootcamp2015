@@ -3,3 +3,4 @@ DemoApp/DemoApp/DemoApp.Common/obj/*
 DemoApp/DemoApp/DemoApp.Windows/bin/*
 DemoApp/DemoApp/DemoApp.Windows/obj/*
 packages/*
+DemoApp/DemoApp/DemoApp.Tests/obj/
