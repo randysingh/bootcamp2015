@@ -58,6 +58,7 @@ namespace DemoApp.Windows
             _container.RegisterSingleton(typeof(INavigationService), null, typeof(WindowsNavigationService));
             _container.RegisterSingleton(typeof(IMyJobsService), null, typeof(MyJobsService));
             _container.RegisterSingleton(typeof(ILocalDataService), null, typeof(WindowsLocalDataService));
+            _container.RegisterSingleton(typeof(IJobSearchService), null, typeof(JobSearchService));
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)

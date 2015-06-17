@@ -36,12 +36,13 @@
   <ItemGroup>
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="INavigationService.cs" />
+    <Compile Include="Interfaces\IJobSearchService.cs" />
     <Compile Include="Interfaces\IMyJobsService.cs" />
     <Compile Include="Interfaces\ILocalDataService.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\JobSearchService.cs" />
     <Compile Include="Services\MyJobsService.cs" />
-    <Compile Include="Services\ServiceCodeSnippets.cs" />
     <Compile Include="ViewModels\JobDetailViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

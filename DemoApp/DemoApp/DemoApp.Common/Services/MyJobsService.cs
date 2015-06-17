@@ -1,5 +1,6 @@
 ﻿using DemoApp.Common.Interfaces;
 using DemoApp.Common.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace DemoApp.Common.Services
 {
     public class MyJobsService : IMyJobsService
     {
+        const string MyJobsKey = "myJobsList";
+
         ILocalDataService _localData;
 
         public MyJobsService(ILocalDataService localData)
@@ -19,15 +22,24 @@ namespace DemoApp.Common.Services
 
         public void AddToMyJobs(Models.Job job)
         {
-            //TODO: add to my jobs if same job id not there
-            //update my jobs list in local data service
-            throw new NotImplementedException();
+            var myJobs = GetMyJobs().ToList();
+
+            if (!myJobs.Any(a => a.JobId == job.JobId))
+            {
+                myJobs.Add(job);
+                _localData.SetValue(MyJobsKey, JsonConvert.SerializeObject(myJobs));
+            }
         }
 
         public Models.Job[] GetMyJobs()
         {
-            //TODO: get my jobs list in local data service.
-            //throw new NotImplementedException();
+            var jobString = _localData.GetValue(MyJobsKey);
+
+            if (jobString != null)
+            {
+                return JsonConvert.DeserializeObject<Job[]>(jobString);
+            }
+            
             return new Job[0];
         }
     }

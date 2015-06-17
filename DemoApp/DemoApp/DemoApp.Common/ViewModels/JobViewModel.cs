@@ -11,5 +11,10 @@ namespace DemoApp.Common.ViewModels
     public class JobViewModel
     {
         public Job Job { get; set; }
+
+        /// <summary>
+        /// Set this to a command that goes to the detail view.
+        /// </summary>
+        public ICommand Select { get; set;}
     }
 }

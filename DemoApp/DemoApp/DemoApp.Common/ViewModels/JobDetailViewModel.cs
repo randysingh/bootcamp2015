@@ -14,12 +14,19 @@ namespace DemoApp.Common.ViewModels
     {
         INavigationService _navigationService;
         IMyJobsService _myJobsService;
+        private bool _isMyJob;
 
         public ICommand SaveJob { get; set; }
 
         public ICommand GoBack { get; set; }
 
         public Job Job { get; set; }
+
+        public bool IsMyJob
+        {
+            get { return _isMyJob; }
+            set { _isMyJob = value; NotifyOfPropertyChange(() => IsMyJob); }
+        }
 
         /// <summary>
         /// This is only here so that caliburn micro will set it.
@@ -46,15 +53,16 @@ namespace DemoApp.Common.ViewModels
         private void OnSaveJob()
         {
             _myJobsService.AddToMyJobs(Job);
-            //TODO Disable the save job button
+            IsMyJob = true;
         }
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
 
-            //TODO detect if this job is part of my jobs, enable / disable button
+            var myJobs = _myJobsService.GetMyJobs();
 
+            IsMyJob = Job != null && myJobs.Any(a => a.JobId == Job.JobId);
         }
     }
 }

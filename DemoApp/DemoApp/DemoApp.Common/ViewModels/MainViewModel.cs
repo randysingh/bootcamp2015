@@ -11,11 +11,12 @@ namespace DemoApp.Common.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IMyJobsService _myJobs;
+        private readonly IJobSearchService _jobSearchService;
 
         private ObservableCollection<JobViewModel> _myJobsList = new ObservableCollection<JobViewModel>();
         private ObservableCollection<JobViewModel> _searchResults = new ObservableCollection<JobViewModel>();
         private bool _isLoading;
-        private string _queryString;
+        private string _queryString = string.Empty;
         private int _minSalary, _maxSalary;
 
         #region Bindable Properties
@@ -54,8 +55,8 @@ namespace DemoApp.Common.ViewModels
 
         public int MaxSalary
         {
-            get { return _minSalary; }
-            set { _minSalary = value; NotifyOfPropertyChange(() => MinSalary); }
+            get { return _maxSalary; }
+            set { _maxSalary = value; NotifyOfPropertyChange(() => MaxSalary); }
         }
 
         public string QueryString
@@ -67,11 +68,13 @@ namespace DemoApp.Common.ViewModels
         #endregion
 
         public MainViewModel(INavigationService navigationService,
-            IMyJobsService myJobs
+            IMyJobsService myJobs,
+            IJobSearchService jobSearchService
             )
         {
             _navigationService = navigationService;
             _myJobs = myJobs;
+            _jobSearchService = jobSearchService;
             DisplayName = "Job Search";
 
             var demoJob = new Job() { JobId = "foo"};
@@ -84,10 +87,24 @@ namespace DemoApp.Common.ViewModels
         {
             IsLoading = true;
 
-            //TODO use some service to get the jobs results.
-            //await ....
+            var jobs = await _jobSearchService.QueryJobs(_queryString, _minSalary, _maxSalary);
 
             IsLoading = false;
+
+            UpdateSearchResults(jobs);
+        }
+
+        private void UpdateSearchResults(Job[] jobs)
+        {
+            _searchResults.Clear();
+
+            foreach (var job in jobs)
+            {
+                var vm = new JobViewModel() { Job = job };
+                vm.Select = new DelegateCommand(a => GoToJobDetail(vm.Job));
+
+                _searchResults.Add(vm);
+            }
         }
 
         protected void GoToJobDetail(Job job)
@@ -105,6 +122,7 @@ namespace DemoApp.Common.ViewModels
             {
                 var vm = new JobViewModel();
                 vm.Job = job;
+                vm.Select = new DelegateCommand(a => GoToJobDetail(vm.Job));
 
                 _myJobsList.Add(vm);
             }

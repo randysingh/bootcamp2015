@@ -8,6 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Go Back" Command="{Binding GoBack}" />
+        
+        <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"
+                        ContentTemplate="{StaticResource JobTemplate}"
+                        ></ContentControl>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Go Back" Command="{Binding GoBack}" />
+            
+            <Grid Width="200">
+                <Button Content="Save" Command="{Binding SaveJob}" Visibility="{Binding IsMyJob, Converter={StaticResource boolNotToVisConverter}}" />
+                <TextBlock Text="Saved!" Visibility="{Binding IsMyJob, Converter={StaticResource boolToVisConverter}}" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

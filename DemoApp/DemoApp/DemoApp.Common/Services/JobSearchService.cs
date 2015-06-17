@@ -1,21 +1,25 @@
-﻿using System;
+﻿using DemoApp.Common.Interfaces;
+using DemoApp.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
-using DemoApp.Common.Models;
+using System.Threading.Tasks;
 
 namespace DemoApp.Common.Services
 {
-    /// <summary>
-    /// TODO: put these code snippets into actual services!
-    /// </summary>
-    public class ServiceCodeSnippets
+    public class JobSearchService : IJobSearchService
     {
+        public async Task<Models.Job[]> QueryJobs(string query, int minSalary, int maxSalary)
+        {
+            var jobs = await GetJobsForQuery(query);
 
-        public Task<Job[]> GetJobsForQuery(string queryString)
+            return FilterJobsWithSalary(jobs, minSalary, maxSalary).ToArray();
+        }
+
+        private Task<Job[]> GetJobsForQuery(string queryString)
         {
             return "http://api.usa.gov/jobs/search.json"
                 .SetQueryParams(new { query = queryString })
