@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DemoApp.Common.Interfaces;
 
 namespace DemoApp.Common.ViewModels
 {
