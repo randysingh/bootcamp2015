@@ -39,7 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DelegateCommand.cs" />
-    <Compile Include="INavigationService.cs" />
+    <Compile Include="Interfaces\INavigationService.cs" />
+    <Compile Include="Interfaces\IStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>

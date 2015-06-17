@@ -1,12 +1,12 @@
-﻿using Caliburn.Micro;
-using INavigationService = DemoApp.Common.INavigationService;
+﻿using System;
+using Caliburn.Micro;
 
 namespace DemoApp.Windows.Services
 {
-    public class WindowsNavigationService : INavigationService
+    public class WindowsNavigationService : Common.Interfaces.INavigationService
     {
-        private readonly Caliburn.Micro.INavigationService _navigationService;
-        public WindowsNavigationService(Caliburn.Micro.INavigationService navigationService)
+        private readonly INavigationService _navigationService;
+        public WindowsNavigationService(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
@@ -14,6 +14,18 @@ namespace DemoApp.Windows.Services
         public void NavigateToViewModel<T>()
         {
             _navigationService.NavigateToViewModel<T>();
+        }
+
+        public void GoBack()
+        {
+            if (_navigationService.CanGoBack)
+            {
+                _navigationService.GoBack();
+            }
+            else
+            {
+                throw new InvalidOperationException("Navigation Service is unable to go back!");
+            }
         }
     }
 }
