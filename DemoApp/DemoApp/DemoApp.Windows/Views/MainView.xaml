@@ -10,7 +10,30 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Job Search Query: </TextBlock>
+                <TextBox Width="200" Text="{Binding QueryString, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Min Salary:</TextBlock>
+                <TextBox Width="200" Text="{Binding MinSalary, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Max Salary:</TextBlock>
+                <TextBox Width="200" Text="{Binding MaxSalary, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+
+            <Button Content="Search" Command="{Binding StartJobsQuery}" />
+        </StackPanel>
         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Name" />
-        <Button Content="Nav" Command="{Binding NavigationDemo}" />
+        
+        <ListView Height="500" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  ItemsSource="{Binding SearchResults}" IsItemClickEnabled="False"
+                  ItemTemplate="{StaticResource JobTemplate}"
+                  >
+            
+            
+        </ListView>
     </Grid>
 </Page>
