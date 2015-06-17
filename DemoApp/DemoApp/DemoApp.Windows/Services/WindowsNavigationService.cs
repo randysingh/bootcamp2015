@@ -3,7 +3,7 @@ using Caliburn.Micro;
 
 namespace DemoApp.Windows.Services
 {
-    public class WindowsNavigationService : Common.Interfaces.INavigationService
+    public class WindowsNavigationService : DemoApp.Common.Interfaces.INavigationService
     {
         private readonly INavigationService _navigationService;
         public WindowsNavigationService(INavigationService navigationService)
